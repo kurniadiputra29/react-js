@@ -1,98 +1,100 @@
-import React, { Component } from 'react'; //seperti include, berasal dari node_moduls
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Button, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback, TouchableWithoutFeedback} from 'react-native';
 
-import Article from './Articles.js';
-import Flex from './flex.js';
+export default class App extends Component{
+  state = {
+    content: 1,
+    baca: false,
+  };
+  handleBaca(){
+    this.setState({
+      baca: !this.state.baca
+    });
+  }
+  // handleSentuhan(){
+  //   alert('hai')
+  // }
+  handleSentuhan(arg){
+    let result = this.state.content + arg;
 
-export default class App extends Component {
+    this.setState({
+      content: result
+    });
+  }
 
   render(){
-    return (
-      <View>
-        <View style={styles.container}>
+    return(
+      <View 
+      style={{
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <Text>{this.state.content}</Text>
+        <Button 
+          title="Tambah 1"
+          color= "blue"
+          onPress={ () => this.handleSentuhan(1) }
+        />
+        <Button 
+          title="Tambah 2"
+          color= "blue"
+          onPress={ () => this.handleSentuhan(2) }
+        />
+        <Button 
+          title="Tambah 3"
+          color= "blue"
+          onPress={ () => this.handleSentuhan(3) }
+        />
 
-          <Article 
-            title="Judul 1 !" 
-            content="Ini cara ganti title dan content !"
-          />
-          <Flex></Flex>
 
-        </View>
-
-        <ScrollView >
-          <View style={styles.container}>
-
-            <Article 
-              title="Judul 1 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 2 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 3 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 4 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 5 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 1 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 2 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 3 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 4 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 5 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 1 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 2 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 3 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 4 !" 
-              content="Ini cara ganti title dan content !"
-            />
-            <Article 
-              title="Judul 5 !" 
-              content="Ini cara ganti title dan content !"
-            />
-
+        <TouchableOpacity
+          onPress={() => this.handleSentuhan(4)}
+        >
+          <View>
+            <Text>Saya Text 1</Text>
+            <Text>Saya Text 2</Text>
+            <Text>Saya Text 3</Text>
           </View>
-        </ScrollView>
+        </TouchableOpacity>
+
+
+        <TouchableHighlight
+          onPress={() => this.handleSentuhan(5)}
+        >
+          <View>
+            <Text>Saya Text 1</Text>
+            <Text>Saya Text 2</Text>
+            <Text>Saya Text 3</Text>
+          </View>
+        </TouchableHighlight>
+
+
+        <TouchableNativeFeedback
+          onPress={() => this.handleSentuhan(5)}
+        >
+          <View style={{
+            backgroundColor: 'yellow',
+            borderRadius: 20,
+            elevation: 4,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <Text>Saya Text 1</Text>
+            <Text>Saya Text 2</Text>
+            <Text>Saya Text 3</Text>
+          </View>
+        </TouchableNativeFeedback>
+
+
+        <TouchableWithoutFeedback
+          onPress={() => this.handleBaca()}
+        >
+          <View style={{backgroundColor: this.state.baca ? 'lime' : 'aqua'}}>
+            <Text>Bismillah</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
- container:{
-  flex : 1,
-  justifyContent: 'center',
- },
-}); 

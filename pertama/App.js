@@ -30,7 +30,7 @@ export default class App extends Component{
     if (!this.state.loaded) return <AppLoading/>;
 
     return(
-      <View style={{flex: 1, backgroundColor: '#0c79c7'}}>
+      <View style={{flex: 1,backgroundColor: '#0c79c7'}}>
       <Container style={{marginTop: Constants.statusBarHeight}}>
         <Header>
           <Left>

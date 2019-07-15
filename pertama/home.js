@@ -1,0 +1,20 @@
+import React, {Component} from 'react';
+import {View, Text, Button} from 'react-native';
+
+export default class Home extends Component{
+	render(){
+		return(
+			<View 
+			style={{
+				flex: 1,
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+				<Text>Ini Home</Text>
+				<Button 
+				title="ke halaman detail"
+				onPress={() => this.props.navigation.navigate('Detail')}></Button>
+			</View>
+		);
+	}
+}
